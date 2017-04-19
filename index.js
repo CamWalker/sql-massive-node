@@ -1,6 +1,7 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var massive = require('massive');
+var config = require('./config.js')
 const port = 8080;
 
 
@@ -11,7 +12,7 @@ app.use(bodyParser.json());
 
 
 var conn = massive.connectSync({
-  connectionString: "postgres://postgres:asbpinon8@localhost:8000/massive_project"
+  connectionString: config.connectionString
 });
 app.set('db', conn);
 var db = app.get('db');
